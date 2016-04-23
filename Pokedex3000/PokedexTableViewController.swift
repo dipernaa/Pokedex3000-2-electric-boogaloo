@@ -46,21 +46,19 @@ class PokedexTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCellWithIdentifier("PokemonCell", forIndexPath: indexPath) as? PokemonCell else {
-            fatalError("THIS SHOULD NEVER HAPPEN")
+            fatalError("WAKA WAKA")
         }
         
         let pokemon = pokemen?[indexPath.row]
         
-        cell.lblName.text = pokemon?.name ?? "Another Pickachu"
+        cell.lblName.text = pokemon?.name!.capitalizedString ?? "Another Pickachu"
         return cell
     }
     
     func loadPokemen() {
         let getPokemen = GetPokemen()
         getPokemen.request { [weak self] (object) -> () in
-            guard let object = object as? [String: AnyObject] else {
-                return
-            }
+            guard let object = object as? [String: AnyObject] else { return }
             
             let results = object["results"]
             self?.pokemen = Mapper<PokemonModel>().mapArray(results)
