@@ -20,6 +20,8 @@
 		EAB1C7491CCB3BF800FE38D5 /* PokemonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB1C7481CCB3BF800FE38D5 /* PokemonDetailViewController.swift */; };
 		EAB1C74E1CCBAB2C00FE38D5 /* PokemonDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB1C74D1CCBAB2C00FE38D5 /* PokemonDetailModel.swift */; };
 		EAB1C7501CCBAF4C00FE38D5 /* StatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB1C74F1CCBAF4C00FE38D5 /* StatModel.swift */; };
+		EAB1C7521CCBD96D00FE38D5 /* TypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB1C7511CCBD96D00FE38D5 /* TypeModel.swift */; };
+		EAB1C7541CCBE18000FE38D5 /* AbilityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB1C7531CCBE18000FE38D5 /* AbilityModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		EAB1C7481CCB3BF800FE38D5 /* PokemonDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonDetailViewController.swift; sourceTree = "<group>"; };
 		EAB1C74D1CCBAB2C00FE38D5 /* PokemonDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonDetailModel.swift; sourceTree = "<group>"; };
 		EAB1C74F1CCBAF4C00FE38D5 /* StatModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatModel.swift; sourceTree = "<group>"; };
+		EAB1C7511CCBD96D00FE38D5 /* TypeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeModel.swift; sourceTree = "<group>"; };
+		EAB1C7531CCBE18000FE38D5 /* AbilityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbilityModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,9 +93,11 @@
 		EAB1C74A1CCB3C2E00FE38D5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EAB1C7531CCBE18000FE38D5 /* AbilityModel.swift */,
 				EAB1C74D1CCBAB2C00FE38D5 /* PokemonDetailModel.swift */,
 				EAB1C7441CCB2B9100FE38D5 /* PokemonModel.swift */,
 				EAB1C74F1CCBAF4C00FE38D5 /* StatModel.swift */,
+				EAB1C7511CCBD96D00FE38D5 /* TypeModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -206,9 +212,11 @@
 			files = (
 				EAB1C7471CCB2CBE00FE38D5 /* PokemonCell.swift in Sources */,
 				EAB1C72E1CCB266E00FE38D5 /* PokedexTableViewController.swift in Sources */,
+				EAB1C7521CCBD96D00FE38D5 /* TypeModel.swift in Sources */,
 				EAB1C74E1CCBAB2C00FE38D5 /* PokemonDetailModel.swift in Sources */,
 				EAB1C7431CCB29A400FE38D5 /* Endpoint.swift in Sources */,
 				EAB1C72C1CCB266E00FE38D5 /* AppDelegate.swift in Sources */,
+				EAB1C7541CCBE18000FE38D5 /* AbilityModel.swift in Sources */,
 				EAB1C7451CCB2B9100FE38D5 /* PokemonModel.swift in Sources */,
 				EAB1C7491CCB3BF800FE38D5 /* PokemonDetailViewController.swift in Sources */,
 				EAB1C7501CCBAF4C00FE38D5 /* StatModel.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  StatModel.swift
+//  AbilityModel.swift
 //  Pokedex3000
 //
 //  Created by Tony DiPerna on 4/23/16.
@@ -9,8 +9,8 @@
 import Foundation
 import ObjectMapper
 
-struct StatModel: Mappable {
-    var base: Int?
+struct AbilityModel: Mappable {
+    var slot: Int?
     var name: String?
     var url: String?
     
@@ -19,8 +19,8 @@ struct StatModel: Mappable {
     }
     
     mutating func mapping(map: Map) {
-        base <- map["base_stat"]
-        name <- map["stat.name"]
-        url <- map["stat.url"]
+        slot <- map["slot"]
+        name <- map["ability.name"]
+        url <- map["ability.url"]
     }
 }

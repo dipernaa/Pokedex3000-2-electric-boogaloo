@@ -15,8 +15,9 @@ struct PokemonDetailModel: Mappable {
     var weight: Double?
     var height: Double?
     var sprite: String?
+    var abilities: [AbilityModel]?
     var stats: [StatModel]?
-    var type: [String : AnyObject]?
+    var types: [TypeModel]?
     
     init?(_ map: Map) {
         
@@ -28,7 +29,8 @@ struct PokemonDetailModel: Mappable {
         weight <- map["weight"]
         height <- map["height"]
         sprite <- map["sprites.front_default"]
+        abilities <- map["abilities"]
         stats <- map["stats"]
-        type <- map["type"]
+        types <- map["types"]
     }
 }

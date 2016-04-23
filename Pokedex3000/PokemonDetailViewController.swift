@@ -15,10 +15,11 @@ class PokemonDetailViewController: UIViewController {
     var pokemon: PokemonModel?
     var detailedPokemon: PokemonDetailModel?
     
+    @IBOutlet weak var defaultView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var lblHeight: UILabel!
     @IBOutlet weak var lblWeight: UILabel!
-    @IBOutlet weak var lblStats: UILabel!
+    @IBOutlet weak var lblPlaceholder: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,15 +47,67 @@ class PokemonDetailViewController: UIViewController {
             if let weight = self?.detailedPokemon?.weight {
                 self?.lblWeight.text = "\((weight/10.0))kg"
             }
+            
+            let goodX = (self?.lblPlaceholder.frame.origin.x)!
+            let goodSpacing = (self?.lblWeight.frame.origin.y)! - (self?.lblHeight.frame.origin.y)!
+            var rollingY = (self?.lblWeight.frame.origin.y)! + (self?.lblHeight.frame.height)!
+
             if let stats = self?.detailedPokemon?.stats {
-                let goodX = (self?.lblStats.frame.origin.x)!
-                let goodSpacing = (self?.lblWeight.frame.origin.y)! - (self?.lblHeight.frame.origin.y)!
-                var rollingY = (self?.lblStats.frame.origin.y)! + (self?.lblStats.frame.height)!
+                rollingY = rollingY + (self?.lblPlaceholder.frame.height)!
+                let label = UILabel(frame: CGRectMake(goodX, rollingY, (self?.view.frame.width)!, 21))
+                label.textAlignment = NSTextAlignment.Left
+                label.attributedText = self?.createUnderline("Stats")
+                self?.defaultView.addSubview(label)
+                rollingY = rollingY + label.frame.height
+                
                 for stat in stats {
                     let label = UILabel(frame: CGRectMake(goodX, rollingY, (self?.view.frame.width)!, 21))
                     label.textAlignment = NSTextAlignment.Left
                     label.text = "\(stat.name!.capitalizedString): \(stat.base!)"
-                    self?.view.addSubview(label)
+                    self?.defaultView.addSubview(label)
+                    rollingY = rollingY + goodSpacing
+                }
+            }
+            
+            if let types = self?.detailedPokemon?.types {
+                types.sort {
+                    return $0.slot > $1.slot
+                }
+                
+                rollingY = rollingY + (self?.lblPlaceholder.frame.height)!
+                let label = UILabel(frame: CGRectMake(goodX, rollingY, (self?.view.frame.width)!, 21))
+                label.textAlignment = NSTextAlignment.Left
+                label.attributedText = self?.createUnderline("Types")
+                self?.defaultView.addSubview(label)
+                rollingY = rollingY + label.frame.height
+                
+                for type in types {
+                    let label = UILabel(frame: CGRectMake(goodX, rollingY, (self?.view.frame.width)!, 21))
+                    label.textAlignment = NSTextAlignment.Left
+                    label.text = "\(type.name!.capitalizedString)"
+                    self?.defaultView.addSubview(label)
+                    rollingY = rollingY + goodSpacing
+                }
+            }
+            
+            
+            if let abilities = self?.detailedPokemon?.abilities {
+                abilities.sort {
+                    return $0.slot > $1.slot
+                }
+                
+                rollingY = rollingY + (self?.lblPlaceholder.frame.height)!
+                let label = UILabel(frame: CGRectMake(goodX, rollingY, (self?.view.frame.width)!, 21))
+                label.textAlignment = NSTextAlignment.Left
+                label.attributedText = self?.createUnderline("Abilities")
+                self?.defaultView.addSubview(label)
+                rollingY = rollingY + label.frame.height
+                
+                for ability in abilities {
+                    let label = UILabel(frame: CGRectMake(goodX, rollingY, (self?.view.frame.width)!, 21))
+                    label.textAlignment = NSTextAlignment.Left
+                    label.text = "\(ability.name!.capitalizedString)"
+                    self?.defaultView.addSubview(label)
                     rollingY = rollingY + goodSpacing
                 }
             }
@@ -77,6 +130,11 @@ class PokemonDetailViewController: UIViewController {
                 self.imageView.image = UIImage(data: data)
             }
         }
+    }
+    
+    func createUnderline(label: String) -> NSAttributedString {
+        let underlineAttribute = [NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue]
+        return NSAttributedString(string: "\(label)", attributes: underlineAttribute)
     }
 
     @IBAction func back() {
