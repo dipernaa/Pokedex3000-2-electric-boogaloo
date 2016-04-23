@@ -23,13 +23,19 @@
                                     <rect key="frame" x="0.0" y="0.0" width="553" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5j-aT-qKt">
-                                            <rect key="frame" x="8" y="11" width="265" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5j-aT-qKt">
+                                            <rect key="frame" x="8" y="11" width="545" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="O5j-aT-qKt" secondAttribute="bottom" constant="3.5" id="6Pd-L4-5SQ"/>
+                                        <constraint firstItem="O5j-aT-qKt" firstAttribute="top" secondItem="AIP-3u-otH" secondAttribute="topMargin" constant="3" id="SDn-rZ-gwe"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="O5j-aT-qKt" secondAttribute="trailing" constant="-8" id="c8l-DS-VhT"/>
+                                        <constraint firstItem="O5j-aT-qKt" firstAttribute="leading" secondItem="AIP-3u-otH" secondAttribute="leadingMargin" id="en5-48-aXm"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="lblName" destination="O5j-aT-qKt" id="fKe-cJ-GKQ"/>
@@ -45,7 +51,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UcF-ou-ebA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="303.75" y="313.73239436619718"/>
+            <point key="canvasLocation" x="303" y="313"/>
         </scene>
         <!--Pokemon Detail View Controller-->
         <scene sceneID="w2D-ZF-dOA">
@@ -131,6 +137,8 @@
                             <constraint firstItem="JcR-1L-HZA" firstAttribute="top" secondItem="gzq-Q0-eQX" secondAttribute="bottom" id="J1F-lL-R5x"/>
                             <constraint firstItem="gzq-Q0-eQX" firstAttribute="leading" secondItem="Q1Z-SE-V8E" secondAttribute="leadingMargin" constant="-20" id="RSD-11-uo3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gzq-Q0-eQX" secondAttribute="trailing" constant="-20" id="SgT-UM-3KB"/>
+                            <constraint firstItem="gzq-Q0-eQX" firstAttribute="top" secondItem="Q1Z-SE-V8E" secondAttribute="topMargin" id="YwE-3E-BQV"/>
+                            <constraint firstItem="JcR-1L-HZA" firstAttribute="top" secondItem="gzq-Q0-eQX" secondAttribute="bottom" id="rQ7-jZ-dyW"/>
                             <constraint firstItem="gz6-NZ-Br0" firstAttribute="width" secondItem="Q1Z-SE-V8E" secondAttribute="width" id="v5y-Y5-CdH"/>
                         </constraints>
                     </view>

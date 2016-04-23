@@ -70,9 +70,9 @@ class PokemonDetailViewController: UIViewController {
             }
             
             if let types = self?.detailedPokemon?.types {
-                types.sort {
-                    return $0.slot > $1.slot
-                }
+                let sorted = types.sort({ (s1: TypeModel, s2: TypeModel) -> Bool in
+                    return s1.slot < s2.slot
+                })
                 
                 rollingY = rollingY + (self?.lblPlaceholder.frame.height)!
                 let label = UILabel(frame: CGRectMake(goodX, rollingY, (self?.view.frame.width)!, 21))
@@ -81,7 +81,7 @@ class PokemonDetailViewController: UIViewController {
                 self?.defaultView.addSubview(label)
                 rollingY = rollingY + label.frame.height
                 
-                for type in types {
+                for type in sorted {
                     let label = UILabel(frame: CGRectMake(goodX, rollingY, (self?.view.frame.width)!, 21))
                     label.textAlignment = NSTextAlignment.Left
                     label.text = "\(type.name!.capitalizedString)"
@@ -92,9 +92,9 @@ class PokemonDetailViewController: UIViewController {
             
             
             if let abilities = self?.detailedPokemon?.abilities {
-                abilities.sort {
-                    return $0.slot > $1.slot
-                }
+                let sorted = abilities.sort({ (s1: AbilityModel, s2: AbilityModel) -> Bool in
+                    return s1.slot < s2.slot
+                })
                 
                 rollingY = rollingY + (self?.lblPlaceholder.frame.height)!
                 let label = UILabel(frame: CGRectMake(goodX, rollingY, (self?.view.frame.width)!, 21))
@@ -103,7 +103,7 @@ class PokemonDetailViewController: UIViewController {
                 self?.defaultView.addSubview(label)
                 rollingY = rollingY + label.frame.height
                 
-                for ability in abilities {
+                for ability in sorted {
                     let label = UILabel(frame: CGRectMake(goodX, rollingY, (self?.view.frame.width)!, 21))
                     label.textAlignment = NSTextAlignment.Left
                     label.text = "\(ability.name!.capitalizedString)"
