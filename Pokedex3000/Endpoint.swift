@@ -9,37 +9,29 @@
 import Foundation
 import Alamofire
 
-let API = "http://pokeapi.co/api/v2/"
+let API = "http://pokeapi.co/api/v2"
 let POKEMON_ENDPOINT = "pokemon"
 
 protocol Endpoint {
-    var method: Alamofire.Method { get }
     var endpoint: String { get }
 }
 
 extension Endpoint {
     func request(handler: (object: AnyObject?) -> ()) {
-        Alamofire.request(method, "\(API)\(endpoint)").responseJSON { (response) -> Void in
+        Alamofire.request(Alamofire.Method.GET, "\(endpoint)").responseJSON { (response) -> Void in
             handler(object: response.result.value)
         }
     }
 }
 
-enum Pokemon: Endpoint {
-    case Pokemen
-    case Pokemon(Int)
+class GetByUrl: Endpoint {
+    var endpoint = ""
     
-    var method: Alamofire.Method {
-        switch self {
-        case Pokemen: return .GET
-        case Pokemon: return .GET
-        }
+    init(withUrl url: String) {
+        endpoint = url
     }
-    
-    var endpoint: String {
-        switch self {
-        case Pokemen: return "/\(POKEMON_ENDPOINT)/"
-        case let Pokemon(id): return "/\(POKEMON_ENDPOINT)/\(id)/"
-        }
-    }
+}
+
+class GetPokemen: Endpoint {
+    var endpoint = "\(API)/\(POKEMON_ENDPOINT)/"
 }
