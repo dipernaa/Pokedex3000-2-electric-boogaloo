@@ -33,5 +33,5 @@ class GetByUrl: Endpoint {
 }
 
 class GetPokemen: Endpoint {
-    var endpoint = "\(API)/\(POKEMON_ENDPOINT)/"
+    var endpoint = "\(API)/\(POKEMON_ENDPOINT)/?limit=1000"
 }

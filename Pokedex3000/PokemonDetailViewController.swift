@@ -18,6 +18,7 @@ class PokemonDetailViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var lblHeight: UILabel!
     @IBOutlet weak var lblWeight: UILabel!
+    @IBOutlet weak var lblStats: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,18 @@ class PokemonDetailViewController: UIViewController {
             }
             if let weight = self?.detailedPokemon?.weight {
                 self?.lblWeight.text = "\((weight/10.0))kg"
+            }
+            if let stats = self?.detailedPokemon?.stats {
+                let goodX = (self?.lblStats.frame.origin.x)!
+                let goodSpacing = (self?.lblWeight.frame.origin.y)! - (self?.lblHeight.frame.origin.y)!
+                var rollingY = (self?.lblStats.frame.origin.y)! + (self?.lblStats.frame.height)!
+                for stat in stats {
+                    let label = UILabel(frame: CGRectMake(goodX, rollingY, (self?.view.frame.width)!, 21))
+                    label.textAlignment = NSTextAlignment.Left
+                    label.text = "\(stat.name!.capitalizedString): \(stat.base!)"
+                    self?.view.addSubview(label)
+                    rollingY = rollingY + goodSpacing
+                }
             }
             
             if let checkedUrl = NSURL(string: (self?.detailedPokemon?.sprite)!) {
